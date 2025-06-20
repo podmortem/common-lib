@@ -1,0 +1,30 @@
+{
+  "name": "podmortem-common-lib",
+  "build": {
+    "dockerfile": "./Containerfile.java21"
+  },
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,consistency=cached"],
+  "updateRemoteUserUID": true,
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "chat.commandCenter.enabled": false,
+        "editor.renderWhitespace": "all",
+        "java.configuration.updateBuildConfiguration": "interactive"
+      },
+      "extensions": [
+        "cweijan.vscode-database-client2",
+        "ms-vscode.makefile-tools",
+        "ms-azuretools.vscode-containers",
+        "redhat.java",
+        "redhat.vscode-quarkus",
+        "redhat.vscode-yaml",
+        "redhat.vscode-xml"
+      ]
+    }
+  }
+}
