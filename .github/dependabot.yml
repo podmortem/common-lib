@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "maven"
-    directory: "/common-lib"
+    directory: "/"
     schedule:
       interval: "daily"
     groups:
@@ -24,14 +24,5 @@ updates:
       interval: "daily"
     groups:
       docker-dependencies:
-        patterns:
-          - "*"
-
-  - package-ecosystem: "gitsubmodule"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    groups:
-      pre-commit-hooks:
         patterns:
           - "*"
