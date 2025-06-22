@@ -26,8 +26,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           server-id: github
-          
+
+      - name: Display Calculated Version
+        run: mvn -B --no-transfer-progress help:evaluate -Dexpression=project.version -q -DforceStdout
+
       - name: Build and Publish Package
         run: mvn -B --no-transfer-progress deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
