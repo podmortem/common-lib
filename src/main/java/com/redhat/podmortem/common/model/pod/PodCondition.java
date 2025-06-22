@@ -1,0 +1,49 @@
+package com.redhat.podmortem.common.model.pod;
+
+public class PodCondition {
+    private String type;
+    private String status;
+    private String lastProbeTime;
+    private String lastTransitionTime;
+    private String reason;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getLastProbeTime() {
+        return lastProbeTime;
+    }
+
+    public void setLastProbeTime(String lastProbeTime) {
+        this.lastProbeTime = lastProbeTime;
+    }
+
+    public String getLastTransitionTime() {
+        return lastTransitionTime;
+    }
+
+    public void setLastTransitionTime(String lastTransitionTime) {
+        this.lastTransitionTime = lastTransitionTime;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+}
