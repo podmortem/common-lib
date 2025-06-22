@@ -17,8 +17,6 @@
         <quarkus.platform.version>3.23.4</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.3</surefire-plugin.version>
-
-        <jgitver.branch-version-pattern>${v.next.major}.${v.next.minor}.${v.next.patch}-${branch.name}-SNAPSHOT</jgitver.branch-version-pattern>
     </properties>
 
     <dependencyManagement>
@@ -74,18 +72,8 @@
             <plugin>
                 <groupId>fr.brouillard.oss</groupId>
                 <artifactId>jgitver-maven-plugin</artifactId>
-                <version>1.1.0</version>
-                <configuration>
-                    <strategy>CONFIGURABLE</strategy>
-                    <configurable>
-                        <pattern>(main|master)</pattern>
-                        <versionPattern>${v.next.major}.${v.next.minor}.${v.next.patch}-SNAPSHOT</versionPattern>
-                    </configurable>
-                    <configurable>
-                        <pattern>.*</pattern>
-                        <versionPattern>${v.next.major}.${v.next.minor}.${v.next.patch}-${branch.name}-SNAPSHOT</versionPattern>
-                    </configurable>
-                </configuration>
+                <version>1.20.0</version>
+                <extensions>true</extensions>
             </plugin>
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
