@@ -6,7 +6,9 @@
   "shutdownAction": "none",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "mounts": [
-    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,consistency=cached"],
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,consistency=cached",
+    "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.m2,target=/root/.m2,consistency=cached"
+  ],
   "updateRemoteUserUID": true,
   "remoteUser": "root",
   "customizations": {
