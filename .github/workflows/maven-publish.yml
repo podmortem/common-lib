@@ -1,0 +1,33 @@
+name: Publish Package to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 21 and Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          server-id: github
+          
+      - name: Build and Publish Package
+        run: mvn -B --no-transfer-progress deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
