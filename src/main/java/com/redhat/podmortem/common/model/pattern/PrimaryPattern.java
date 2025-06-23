@@ -6,9 +6,20 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 public class PrimaryPattern {
     private String regex;
     private double confidence;
-    
-    public String getRegex() { return regex; }
-    public void setRegex(String regex) { this.regex = regex; }
-    public double getConfidence() { return confidence; }
-    public void setConfidence(double confidence) { this.confidence = confidence; }
+
+    public String getRegex() {
+        return regex;
+    }
+
+    public void setRegex(String regex) {
+        this.regex = regex;
+    }
+
+    public double getConfidence() {
+        return confidence;
+    }
+
+    public void setConfidence(double confidence) {
+        this.confidence = confidence;
+    }
 }
