@@ -1,4 +1,4 @@
-name: Publish Package to GitHub Packages
+name: Publish to GitHub Packages
 
 on:
   push:
@@ -9,28 +9,40 @@ on:
 
 jobs:
   publish:
+    name: Build and Publish
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up JDK 21 and Maven
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
           server-id: github
+          settings-path: ${{ github.workspace }}
 
-      - name: Display Calculated Version
-        run: mvn -B --no-transfer-progress help:evaluate -Dexpression=project.version -q -DforceStdout
+      - name: Set snapshot version for main branch
+        if: startsWith(github.ref, 'refs/heads/main')
+        id: vars
+        run: echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Build and Publish Package
-        run: mvn -B --no-transfer-progress deploy
+      - name: Update POM for snapshot version
+        if: startsWith(github.ref, 'refs/heads/main')
+        run: mvn versions:set -DnewVersion=1.0-${{ steps.vars.outputs.sha }}-SNAPSHOT -DprocessAllModules -DgenerateBackupPoms=false
+
+      - name: Set release version from tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          VERSION=${{ github.ref_name#v }}
+          mvn versions:set -DnewVersion=${VERSION} -DprocessAllModules -DgenerateBackupPoms=false
+
+      - name: Publish to GitHub Packages
+        run: mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
