@@ -1,7 +1,8 @@
 package com.redhat.podmortem.common.model.kube.podmortem;
 
-import com.redhat.podmortem.common.model.kube.event.Event;
-import com.redhat.podmortem.common.model.kube.pod.Pod;
+import io.fabric8.kubernetes.api.model.Pod;
+import io.fabric8.kubernetes.api.model.events.v1.Event;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
