@@ -1,0 +1,8 @@
+<configuration xmlns="http://jgitver.github.io/maven/configuration/1.x.x">
+    <strategy>CONFIGURABLE</strategy>
+    <mavenLike>true</mavenLike>
+    <autoIncrementPatch>true</autoIncrementPatch>
+    <useCommitDistance>false</useCommitDistance>
+    <useShortCommitId>true</useShortCommitId>
+    <nonQualifierBranches>main</nonQualifierBranches>
+</configuration>
