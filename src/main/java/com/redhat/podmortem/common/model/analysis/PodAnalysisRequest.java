@@ -1,14 +1,22 @@
 package com.redhat.podmortem.common.model.analysis;
 
-import com.redhat.podmortem.common.model.event.Event;
-import com.redhat.podmortem.common.model.pod.Pod;
+import com.redhat.podmortem.common.model.kube.event.Event;
+import com.redhat.podmortem.common.model.kube.pod.Pod;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
+@RegisterForReflection
 public class PodAnalysisRequest {
 
     private Pod pod;
     private String logs;
     private List<Event> events;
+
+    public PodAnalysisRequest(Pod pod, String logs, List<Event> events) {
+        this.pod = pod;
+        this.logs = logs;
+        this.events = events;
+    }
 
     public Pod getPod() {
         return pod;

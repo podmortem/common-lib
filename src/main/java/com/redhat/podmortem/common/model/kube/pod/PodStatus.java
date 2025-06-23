@@ -1,7 +1,9 @@
-package com.redhat.podmortem.common.model.pod;
+package com.redhat.podmortem.common.model.kube.pod;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
+@RegisterForReflection
 public class PodStatus {
     private String phase;
     private List<PodCondition> conditions;
