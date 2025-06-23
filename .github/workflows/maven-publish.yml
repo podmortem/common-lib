@@ -18,14 +18,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up JDK 21
+      - name: Set up JDK 21 and Maven
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
           server-id: github
-          settings-path: ${{ github.workspace }}
 
       - name: Set snapshot version for main branch
         if: startsWith(github.ref, 'refs/heads/main')
@@ -34,16 +35,19 @@ jobs:
 
       - name: Update POM for snapshot version
         if: startsWith(github.ref, 'refs/heads/main')
-        run: mvn versions:set -DnewVersion=1.0-${{ steps.vars.outputs.sha }}-SNAPSHOT -DprocessAllModules -DgenerateBackupPoms=false
+        run: mvn -B -ntp versions:set -DnewVersion=1.0-${{ steps.vars.outputs.sha }}-SNAPSHOT -DprocessAllModules -DgenerateBackupPoms=false
 
       - name: Set release version from tag
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
           TAG=${{ github.ref_name }}
           VERSION=${TAG#v}
-          mvn versions:set -DnewVersion=${VERSION} -DprocessAllModules -DgenerateBackupPoms=false
+          mvn -B -ntp versions:set -DnewVersion=${VERSION} -DprocessAllModules -DgenerateBackupPoms=false
 
-      - name: Publish to GitHub Packages
-        run: mvn -B deploy
+      - name: Display Calculated Version
+        run: mvn -B --no-transfer-progress help:evaluate -Dexpression=project.version -q -DforceStdout
+
+      - name: Build and Publish Package
+        run: mvn -B --no-transfer-progress deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
