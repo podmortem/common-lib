@@ -1,13 +1,11 @@
 package com.redhat.podmortem.common.model.analysis;
 
 import com.redhat.podmortem.common.model.pattern.Pattern;
-import io.quarkus.runtime.annotations.RegisterForReflection;
 
-@RegisterForReflection
 public class MatchedEvent {
     private double score;
     private int lineNumber;
-    private String logLine;
+    private EventContext context;
     private Pattern matchedPattern;
 
     public double getScore() {
@@ -26,12 +24,12 @@ public class MatchedEvent {
         this.lineNumber = lineNumber;
     }
 
-    public String getLogLine() {
-        return logLine;
+    public EventContext getContext() {
+        return context;
     }
 
-    public void setLogLine(String logLine) {
-        this.logLine = logLine;
+    public void setContext(EventContext context) {
+        this.context = context;
     }
 
     public Pattern getMatchedPattern() {
