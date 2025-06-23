@@ -1,8 +1,10 @@
-package com.redhat.podmortem.common.model.pod;
+package com.redhat.podmortem.common.model.kube.pod;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 import java.util.Map;
 
+@RegisterForReflection
 public class Container {
     private String name;
     private String image;

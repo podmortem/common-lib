@@ -1,5 +1,8 @@
-package com.redhat.podmortem.common.model.event;
+package com.redhat.podmortem.common.model.kube.event;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
+
+@RegisterForReflection
 public class InvolvedObject {
     private String kind;
     private String namespace;

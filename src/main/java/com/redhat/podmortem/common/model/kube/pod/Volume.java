@@ -1,5 +1,8 @@
-package com.redhat.podmortem.common.model.pod;
+package com.redhat.podmortem.common.model.kube.pod;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
+
+@RegisterForReflection
 public class Volume {
     private String name;
     private ProjectedVolumeSource projected;

@@ -1,14 +1,20 @@
-package com.redhat.podmortem.common.model.event;
+package com.redhat.podmortem.common.model.kube.pod;
 
-import com.redhat.podmortem.common.model.pod.ManagedField;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
+import java.util.Map;
 
-public class EventMetadata {
+@RegisterForReflection
+public class PodMetadata {
+
     private String name;
     private String namespace;
     private String uid;
     private String resourceVersion;
+    private int generation;
     private String creationTimestamp;
+    private Map<String, String> labels;
+    private Map<String, String> annotations;
     private List<ManagedField> managedFields;
 
     public String getName() {
@@ -43,12 +49,36 @@ public class EventMetadata {
         this.resourceVersion = resourceVersion;
     }
 
+    public int getGeneration() {
+        return generation;
+    }
+
+    public void setGeneration(int generation) {
+        this.generation = generation;
+    }
+
     public String getCreationTimestamp() {
         return creationTimestamp;
     }
 
     public void setCreationTimestamp(String creationTimestamp) {
         this.creationTimestamp = creationTimestamp;
+    }
+
+    public Map<String, String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Map<String, String> labels) {
+        this.labels = labels;
+    }
+
+    public Map<String, String> getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(Map<String, String> annotations) {
+        this.annotations = annotations;
     }
 
     public List<ManagedField> getManagedFields() {

@@ -1,7 +1,9 @@
-package com.redhat.podmortem.common.model.pod;
+package com.redhat.podmortem.common.model.kube.pod;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.Map;
 
+@RegisterForReflection
 public class ContainerStatus {
     private String name;
     private boolean ready;

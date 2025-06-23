@@ -1,5 +1,8 @@
-package com.redhat.podmortem.common.model.pod;
+package com.redhat.podmortem.common.model.kube.pod;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
+
+@RegisterForReflection
 public class PodCondition {
     private String type;
     private String status;
