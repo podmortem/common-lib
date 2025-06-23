@@ -1,4 +1,4 @@
-package com.redhat.podmortem.common.model.analysis;
+package com.redhat.podmortem.common.model.kube.podmortem;
 
 import com.redhat.podmortem.common.model.kube.event.Event;
 import com.redhat.podmortem.common.model.kube.pod.Pod;
@@ -6,13 +6,13 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
 @RegisterForReflection
-public class PodAnalysisRequest {
+public class PodFailureData {
 
     private Pod pod;
     private String logs;
     private List<Event> events;
 
-    public PodAnalysisRequest(Pod pod, String logs, List<Event> events) {
+    public PodFailureData(Pod pod, String logs, List<Event> events) {
         this.pod = pod;
         this.logs = logs;
         this.events = events;
