@@ -3,10 +3,7 @@ package com.redhat.podmortem.common.model.provider;
 import com.redhat.podmortem.common.model.analysis.AnalysisResult;
 import io.smallrye.mutiny.Uni;
 
-/**
- * The core interface defining the contract for any AI provider implementation. It lives in the
- * common library so both the provider implementations and the consuming services can use it.
- */
+/** A simplified core interface for any AI provider implementation. */
 public interface AIProvider {
 
     /**
@@ -25,13 +22,6 @@ public interface AIProvider {
      * @return A Uni that will resolve to the validation result.
      */
     Uni<ValidationResult> validateConfiguration(AIProviderConfig config);
-
-    /**
-     * Gets the capabilities of the AI provider, such as supported models and rate limits.
-     *
-     * @return The provider's capabilities.
-     */
-    ProviderCapabilities getCapabilities();
 
     /**
      * Returns the unique identifier for the provider (e.g., "openshift-ai", "watsonx").
