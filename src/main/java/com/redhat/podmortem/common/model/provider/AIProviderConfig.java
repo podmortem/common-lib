@@ -20,6 +20,8 @@ public class AIProviderConfig implements Serializable {
     private int maxRetries = 3;
     private boolean cachingEnabled = true;
     private String promptTemplate;
+    private int maxTokens = 500;
+    private double temperature = 0.3;
 
     public AIProviderConfig() {}
 
@@ -93,6 +95,22 @@ public class AIProviderConfig implements Serializable {
 
     public void setPromptTemplate(String promptTemplate) {
         this.promptTemplate = promptTemplate;
+    }
+
+    public int getMaxTokens() {
+        return maxTokens;
+    }
+
+    public void setMaxTokens(int maxTokens) {
+        this.maxTokens = maxTokens;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
     }
 
     @Override
