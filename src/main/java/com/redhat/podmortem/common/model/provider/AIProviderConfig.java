@@ -127,4 +127,35 @@ public class AIProviderConfig implements Serializable {
     public int hashCode() {
         return Objects.hash(providerId, apiUrl, modelId);
     }
+
+    /**
+     * Creates an AIProviderConfig from an AI Provider CRD and authentication token.
+     *
+     * @param spec The AI Provider CRD spec
+     * @param authToken The authentication token from the referenced secret
+     * @return A configured AIProviderConfig instance
+     */
+    public static AIProviderConfig fromCRD(
+            com.redhat.podmortem.common.model.kube.aiprovider.AIProviderSpec spec,
+            String authToken) {
+        AIProviderConfig config = new AIProviderConfig();
+        config.setProviderId(spec.getProviderId());
+        config.setApiUrl(spec.getApiUrl());
+        config.setModelId(spec.getModelId());
+        config.setAuthToken(authToken);
+        config.setTimeoutSeconds(spec.getTimeoutSeconds() != null ? spec.getTimeoutSeconds() : 30);
+        config.setMaxRetries(spec.getMaxRetries() != null ? spec.getMaxRetries() : 3);
+        config.setCachingEnabled(
+                spec.getCachingEnabled() != null ? spec.getCachingEnabled() : true);
+        config.setPromptTemplate(spec.getPromptTemplate());
+        config.setMaxTokens(spec.getMaxTokens() != null ? spec.getMaxTokens() : 500);
+        config.setTemperature(spec.getTemperature() != null ? spec.getTemperature() : 0.3);
+
+        // Convert additional config to headers if needed
+        if (spec.getAdditionalConfig() != null) {
+            config.setAdditionalHeaders(spec.getAdditionalConfig());
+        }
+
+        return config;
+    }
 }
