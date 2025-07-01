@@ -6,7 +6,7 @@ import java.util.List;
 
 @RegisterForReflection
 public class PodmortemStatus {
-    
+
     private String phase;
     private String message;
     private Instant lastUpdate;
@@ -52,7 +52,7 @@ public class PodmortemStatus {
     public void setRecentFailures(List<PodFailureStatus> recentFailures) {
         this.recentFailures = recentFailures;
     }
-    
+
     public static class PodFailureStatus {
         private String podName;
         private String podNamespace;
