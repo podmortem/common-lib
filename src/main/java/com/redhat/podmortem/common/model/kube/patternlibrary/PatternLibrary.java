@@ -1,5 +1,6 @@
 package com.redhat.podmortem.common.model.kube.patternlibrary;
 
+import io.fabric8.kubernetes.api.model.Namespaced;
 import io.fabric8.kubernetes.client.CustomResource;
 import io.fabric8.kubernetes.model.annotation.Group;
 import io.fabric8.kubernetes.model.annotation.Kind;
@@ -10,4 +11,5 @@ import io.quarkus.runtime.annotations.RegisterForReflection;
 @Version("v1alpha1")
 @Kind("PatternLibrary")
 @RegisterForReflection
-public class PatternLibrary extends CustomResource<PatternLibrarySpec, PatternLibraryStatus> {}
+public class PatternLibrary extends CustomResource<PatternLibrarySpec, PatternLibraryStatus>
+        implements Namespaced {}
