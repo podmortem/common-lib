@@ -1,5 +1,7 @@
 package com.redhat.podmortem.common.model.kube.podmortem;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.fabric8.kubernetes.api.model.Event;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.quarkus.runtime.annotations.RegisterForReflection;
@@ -12,12 +14,19 @@ public class PodFailureData {
     private String logs;
     private List<Event> events;
 
-    public PodFailureData(Pod pod, String logs, List<Event> events) {
+    public PodFailureData() {}
+
+    @JsonCreator
+    public PodFailureData(
+            @JsonProperty("pod") Pod pod,
+            @JsonProperty("logs") String logs,
+            @JsonProperty("events") List<Event> events) {
         this.pod = pod;
         this.logs = logs;
         this.events = events;
     }
 
+    @JsonProperty("pod")
     public Pod getPod() {
         return pod;
     }
@@ -26,6 +35,7 @@ public class PodFailureData {
         this.pod = pod;
     }
 
+    @JsonProperty("logs")
     public String getLogs() {
         return logs;
     }
@@ -34,6 +44,7 @@ public class PodFailureData {
         this.logs = logs;
     }
 
+    @JsonProperty("events")
     public List<Event> getEvents() {
         return events;
     }
