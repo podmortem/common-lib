@@ -1,5 +1,6 @@
 package com.redhat.podmortem.common.model.provider;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
@@ -10,6 +11,7 @@ import java.util.Objects;
  * Represents the natural language explanation received from an AI provider. This is a shared model
  * that is part of the AIProvider contract.
  */
+@RegisterForReflection
 public class AIResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 

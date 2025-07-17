@@ -1,9 +1,11 @@
 package com.redhat.podmortem.common.model.provider;
 
 import com.redhat.podmortem.common.model.analysis.AnalysisResult;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import io.smallrye.mutiny.Uni;
 
 /** A simplified core interface for any AI provider implementation. */
+@RegisterForReflection
 public interface AIProvider {
 
     /**

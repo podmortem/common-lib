@@ -1,8 +1,10 @@
 package com.redhat.podmortem.common.model.analysis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
+@RegisterForReflection
 public class AnalysisResult {
     @JsonProperty("analysis_id")
     private String analysisId;

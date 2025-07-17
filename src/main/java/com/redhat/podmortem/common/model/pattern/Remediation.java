@@ -1,8 +1,10 @@
 package com.redhat.podmortem.common.model.pattern;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
+@RegisterForReflection
 public class Remediation {
     private String description;
 

@@ -1,8 +1,10 @@
 package com.redhat.podmortem.common.model.provider;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
 
 /** A shared model to hold the result of a provider configuration validation check. */
+@RegisterForReflection
 public class ValidationResult implements Serializable {
     private static final long serialVersionUID = 1L;
 

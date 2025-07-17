@@ -1,5 +1,6 @@
 package com.redhat.podmortem.common.model.provider;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
@@ -8,6 +9,7 @@ import java.util.Objects;
  * A shared configuration model for any AI Provider. This can be loaded from Kubernetes ConfigMaps
  * and Secrets.
  */
+@RegisterForReflection
 public class AIProviderConfig implements Serializable {
     private static final long serialVersionUID = 1L;
 

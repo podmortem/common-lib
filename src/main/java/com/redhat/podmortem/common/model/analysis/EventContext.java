@@ -1,7 +1,9 @@
 package com.redhat.podmortem.common.model.analysis;
 
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.List;
 
+@RegisterForReflection
 public class EventContext {
 
     private List<String> linesBefore;

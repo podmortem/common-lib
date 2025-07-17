@@ -1,7 +1,9 @@
 package com.redhat.podmortem.common.model.analysis;
 
 import com.redhat.podmortem.common.model.pattern.Pattern;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
+@RegisterForReflection
 public class MatchedEvent {
     private double score;
     private int lineNumber;

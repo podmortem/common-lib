@@ -1,8 +1,10 @@
 package com.redhat.podmortem.common.model.analysis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import java.util.Map;
 
+@RegisterForReflection
 public class AnalysisSummary {
     @JsonProperty("significant_events")
     private int significantEvents;

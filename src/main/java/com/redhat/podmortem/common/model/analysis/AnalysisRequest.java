@@ -2,11 +2,13 @@ package com.redhat.podmortem.common.model.analysis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.redhat.podmortem.common.model.provider.AIProviderConfig;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 /**
  * Request model for AI analysis containing both the log analysis results and the AI provider
  * configuration sent by the operator.
  */
+@RegisterForReflection
 public class AnalysisRequest {
 
     @JsonProperty("analysis_result")
