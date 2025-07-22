@@ -15,6 +15,9 @@ public class Pattern {
     @JsonProperty("secondary_patterns")
     private List<SecondaryPattern> secondaryPatterns;
 
+    @JsonProperty("sequence_patterns")
+    private List<SequencePattern> sequencePatterns;
+
     private String severity;
     private List<String> category;
     private Remediation remediation;
@@ -55,6 +58,14 @@ public class Pattern {
 
     public void setSecondaryPatterns(List<SecondaryPattern> secondaryPatterns) {
         this.secondaryPatterns = secondaryPatterns;
+    }
+
+    public List<SequencePattern> getSequencePatterns() {
+        return sequencePatterns;
+    }
+
+    public void setSequencePatterns(List<SequencePattern> sequencePatterns) {
+        this.sequencePatterns = sequencePatterns;
     }
 
     public String getSeverity() {
