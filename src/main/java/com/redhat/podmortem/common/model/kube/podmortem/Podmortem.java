@@ -7,6 +7,7 @@ import io.fabric8.kubernetes.model.annotation.Kind;
 import io.fabric8.kubernetes.model.annotation.Version;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
+/** Kubernetes CRD for pod failure monitoring and analysis. */
 @Group("podmortem.redhat.com")
 @Version("v1alpha1")
 @Kind("Podmortem")
