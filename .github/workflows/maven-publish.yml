@@ -10,7 +10,7 @@ on:
 jobs:
   publish:
     name: Build and Publish
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
